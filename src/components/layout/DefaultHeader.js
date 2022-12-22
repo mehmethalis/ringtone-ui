@@ -21,13 +21,7 @@ export default function DefaultHeader({ bread }) {
         background: colorBgContainer,
       }}
     >
-      {bread === "1" && (
-        <span className="welcome-message">
-          <p>
-            {moment(new Date()).locale("tr").format("LL")} , <b> Hoşgeldiniz!</b>
-          </p>
-        </span>
-      )}
+      
 
       {bread !== "1" && (
         <>

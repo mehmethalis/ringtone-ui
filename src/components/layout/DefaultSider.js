@@ -5,6 +5,7 @@ import {
   DashboardOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
+import Logo from "../shared/logo";
 const { Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -16,8 +17,8 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem(<Link to="/">Anasayfa</Link>, "1", <DashboardOutlined />),
-  getItem(<Link to="/profile">Profilim</Link>, "2", <TeamOutlined />),
+  getItem(<Link to="/">Home</Link>, "1", <DashboardOutlined />),
+  getItem(<Link to="/profile">Profile</Link>, "2", <TeamOutlined />),
 ];
 export default function DefaultSider({ handleBread, bread }) {
   const [collapsed, setCollapsed] = useState(false);
@@ -26,8 +27,7 @@ export default function DefaultSider({ handleBread, bread }) {
     <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
       <div className="brand">
         <a href="/">
-          {/* <img src={logo} width={collapsed ? 50 : 90} alt="sellerquick logo" /> */}
-          logo gelcek
+          <Logo/>
         </a>
       </div>
 
