@@ -8,8 +8,8 @@ export default function DefaultFooter() {
         textAlign: "center",
       }}
     >
-      <a href="https://sellerquick.com" target={"_blank"} rel="noreferrer">
-        SellerQuick{" "}
+      <a href="/" target={"_blank"} rel="noreferrer">
+        Ringtone Store{" "}
       </a>
       &#169;
       {" " + new Date().getFullYear()} Tüm hakları saklıdır.
