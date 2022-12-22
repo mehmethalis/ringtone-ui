@@ -1,0 +1,25 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 50px 50px 50px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;}
+
+.form-login img {
+  padding: 10px 0;
+}
+
+.heading {
+  font-weight: 600;
+  padding: 0 0 15px 0;
+}
