@@ -16,10 +16,7 @@ export default function DefaultLayout({ children }) {
 
   const getSelectedKey = () => {
     const path = location.pathname;
-    if (path.includes("customer")) return "2";
-    if (path.includes("plans")) return "3";
-    if (path.includes("credits")) return "4";
-    if (path.includes("promotions")) return "5";
+    if (path.includes("profile")) return "2";
 
     return "1";
   };
@@ -47,11 +44,8 @@ export default function DefaultLayout({ children }) {
               margin: "16px 0",
             }}
           >
-            {bread === "1" && <Breadcrumb.Item>/Anasayfa</Breadcrumb.Item>}
-            {bread === "2" && <Breadcrumb.Item>/Müşteriler</Breadcrumb.Item>}
-            {bread === "3" && <Breadcrumb.Item>/Planlar</Breadcrumb.Item>}
-            {bread === "4" && <Breadcrumb.Item>/Krediler</Breadcrumb.Item>}
-            {bread === "5" && <Breadcrumb.Item>/Promosyonlar</Breadcrumb.Item>}
+            {bread === "1" && <Breadcrumb.Item>/ Home</Breadcrumb.Item>}
+            {bread === "2" && <Breadcrumb.Item>/ Profile</Breadcrumb.Item>}
           </Breadcrumb>
           <div
             style={{
