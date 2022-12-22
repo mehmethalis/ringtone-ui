@@ -27,7 +27,7 @@ export default function DefaultSider({ handleBread, bread }) {
     <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
       <div className="brand">
         <a href="/">
-          <Logo/>
+          <Logo isSmall={collapsed}/>
         </a>
       </div>
 

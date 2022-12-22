@@ -21,29 +21,23 @@ export default function DefaultHeader({ bread }) {
         background: colorBgContainer,
       }}
     >
-      
-
-      {bread !== "1" && (
-        <>
-          <span>
-            Kayıtlı Kullanıcı : <Badge count={true ? "+10" : 0} showZero color="#52c41a" />
-          </span>
-        </>
-      )}
-
       <div className="header-right">
         <Popover
           content={
             <div>
-              <a href="javascript;" onClick={() => dispatch(userLogoutRequest())}>
+              <a
+                href="javascript;"
+                onClick={() => dispatch(userLogoutRequest())}
+              >
                 <LogoutOutlined style={{ paddingRight: "5px" }} />
-                Çıkış Yap
+                Log Out
               </a>
             </div>
           }
           title={
             <div>
-              <CrownFilled style={{ fontSize: "20px", color: "#ffce3d" }} /> Admin
+              <CrownFilled style={{ fontSize: "20px", color: "#ffce3d" }} />{" "}
+              Admin
               <p>
                 <small>{profile.email}</small>
               </p>
