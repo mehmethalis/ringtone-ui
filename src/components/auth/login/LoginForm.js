@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "../../shared/logo";
 import { useDispatch, useSelector } from "react-redux";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
@@ -14,8 +15,7 @@ export default function LoginForm() {
   return (
     <div className="form-login">
       <a href="/">
-        {/* <img src={logo} width="110" alt="sellerquick logo" /> */}
-        Logo gelecek
+        <Logo></Logo>
       </a>
       <h3 className="heading">Giriş Yap</h3>
       <Form
