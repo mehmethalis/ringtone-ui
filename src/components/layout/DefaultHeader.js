@@ -38,13 +38,8 @@ export default function DefaultHeader({ bread }) {
             icon={<ShoppingCartOutlined />}
             className="avatar"
           />
-<<<<<<< HEAD
           <Drawer title={'Shopping Cart'} width={520} closable={false} onClose={onClose} open={open}>
             <DrawerFooter/>
-=======
-          <Drawer width={520} closable={false} onClose={onClose} open={open}>
-            <DrawerFooter />
->>>>>>> 8f3a9c3113886a0f2b8824b52de887299af3ab06
           </Drawer>
         </Badge>
 
