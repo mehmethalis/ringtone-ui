@@ -11,6 +11,8 @@ import "./layout.css";
 import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogoutRequest } from "../../store/actions/user.actions";
+import DrawerHeader from "./drawer/DrawerHeader";
+import DrawerFooter from "./drawer/DrawerFooter";
 const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
@@ -43,7 +45,7 @@ export default function DefaultHeader({ bread }) {
             className="avatar"
           />
           <Drawer width={520} closable={false} onClose={onClose} open={open}>
-            
+            <DrawerFooter/>
           </Drawer>
         </Badge>
 
