@@ -3,7 +3,7 @@ import axios from "axios";
 export const login = async (credentials) => {
   return {
     id: "1",
-    username: "testuser",
+    username: "Test User",
   };
   // return await axios
   //   .post(`${process.env.REACT_APP_API_URL}/auth/login`, credentials)
@@ -14,11 +14,11 @@ export const getProfile = async () => {
   // const session = await window.localStorage.getItem("session");
   return {
     id: "1",
-    username: "testuser",
+    username: "Test User",
   };
 };
 
-export const pay = async (data) => {
+export const pay = async (ringtonesIds) => {
   // example data
   // const data = {
   //   userId: "1",

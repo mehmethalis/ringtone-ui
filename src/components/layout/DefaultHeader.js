@@ -9,7 +9,7 @@ import { userLogoutRequest } from "../../store/actions/user.actions";
 const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
-  const { profile } = useSelector((state) => state.userState);
+  const { username } = useSelector((state) => state.userState);
   const dispatch = useDispatch();
   const {
     token: { colorBgContainer },
@@ -25,10 +25,7 @@ export default function DefaultHeader({ bread }) {
         <Popover
           content={
             <div>
-              <a
-                href="javascript;"
-                onClick={() => dispatch(userLogoutRequest())}
-              >
+              <a href="javascript;" onClick={() => dispatch(userLogoutRequest())}>
                 <LogoutOutlined style={{ paddingRight: "5px" }} />
                 Log Out
               </a>
@@ -36,11 +33,7 @@ export default function DefaultHeader({ bread }) {
           }
           title={
             <div>
-              <CrownFilled style={{ fontSize: "20px", color: "#ffce3d" }} />{" "}
-              Admin
-              <p>
-                <small>{profile.email}</small>
-              </p>
+              <CrownFilled style={{ fontSize: "20px", color: "#ffce3d" }} /> {username}
             </div>
           }
           trigger="click"
