@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  TeamOutlined,
-  DashboardOutlined,
+  HomeOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import Logo from "../shared/logo";
@@ -16,18 +16,20 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
-const items = [
-  getItem(<Link to="/">Home</Link>, "1", <DashboardOutlined />),
-  getItem(<Link to="/profile">Profile</Link>, "2", <TeamOutlined />),
-];
+
 export default function DefaultSider({ handleBread, bread }) {
   const [collapsed, setCollapsed] = useState(false);
+
+  const items = [
+    getItem(<Link to="/">Home</Link>, "1", (collapsed ? <HomeOutlined/> : <div></div>)),
+    getItem(<Link to="/profile">Profile</Link>, "2", (collapsed ? <UserOutlined/> : <div></div>)),
+  ];
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
       <div className="brand">
         <a href="/">
-          <Logo/>
+          <Logo isSmall={collapsed}/>
         </a>
       </div>
 
