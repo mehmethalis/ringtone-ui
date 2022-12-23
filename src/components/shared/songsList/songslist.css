@@ -1,0 +1,6 @@
+.buttons{
+    padding: inherit;
+}
+.buttons button{
+    margin: 0 5px;
+}
