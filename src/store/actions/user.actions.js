@@ -16,7 +16,7 @@ export const userLoginRequestError = () => {
 export const userLoginRequestSuccess = (profile) => {
   return {
     type: ActionTypes.USER_LOGIN_REQUEST_SUCCESS,
-    user: { profile },
+    user: profile,
   };
 };
 export const userLogoutRequest = () => {
@@ -40,6 +40,20 @@ export const userVerifyToken = () => {
 export const userVerifyTokenSuccess = (profile) => {
   return {
     type: ActionTypes.USER_VERIFY_TOKEN_SUCCESS,
-    user: { profile },
+    user: profile,
+  };
+};
+
+export const pay = (ringtonesIds) => {
+  return {
+    type: ActionTypes.PAY_REQUEST,
+    ringtonesIds,
+  };
+};
+
+export const paySuccess = (ringtones) => {
+  return {
+    type: ActionTypes.PAY_REQUEST_SUCCESS,
+    user: { userRingtones: ringtones },
   };
 };

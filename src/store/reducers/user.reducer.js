@@ -3,11 +3,8 @@ import { ActionTypes } from "../constants/actionTypes";
 const userInitialState = {
   isLoading: false,
   isLogin: false,
-  profile: {
-    firstName: "",
-    lastName: "",
-    email: "",
-  },
+  userRingtones: null,
+  allRingtones: null,
 };
 export default function userReducer(state = userInitialState, { type, user }) {
   switch (type) {
@@ -16,7 +13,7 @@ export default function userReducer(state = userInitialState, { type, user }) {
     case ActionTypes.USER_LOGIN_REQUEST_SUCCESS:
       return {
         ...state,
-        profile: { ...state.profile, ...user.profile },
+        ...user,
         isLoading: false,
         isLogin: true,
       };
@@ -27,8 +24,17 @@ export default function userReducer(state = userInitialState, { type, user }) {
     case ActionTypes.USER_VERIFY_TOKEN_SUCCESS:
       return {
         ...state,
-        profile: { ...state.profile, ...user.profile },
+        ...user,
+        allRingtones: user.allRingtones,
         isLogin: true,
+      };
+    case ActionTypes.PAY_REQUEST:
+      return { ...state, isLoading: true };
+    case ActionTypes.PAY_REQUEST_SUCCESS:
+      return {
+        ...state,
+        userRingtones: [...state.userRingtones, ...user.userRingtones],
+        isLoading: false,
       };
     default:
       return state;
