@@ -34,11 +34,11 @@ export default function DefaultHeader({ bread }) {
         <Player />
       </div>
       <div className="header-right">
-        <Badge count={5} offset={[-12, 12]} size="small">
+        <Badge count={5} offset={[-8, 8]} size="small" style={{marginRight:"15px"}}>
           <Avatar
             onClick={showDrawer}
-            size={50}
-            style={{ color: "#002140", backgroundColor: "white" }}
+            size={"large"}
+            style={{ color: "#002140", backgroundColor: "white",fontSize:"30px",marginRight:"15px" }}
             icon={<ShoppingCartOutlined />}
             className="avatar"
           />
@@ -71,7 +71,7 @@ export default function DefaultHeader({ bread }) {
           placement="bottomRight"
         >
           <Avatar
-            size={"default"}
+            size={"medium"}
             style={{ backgroundColor: "#002140" }}
             icon={<UserOutlined />}
             className="avatar"
