@@ -12,7 +12,6 @@ const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
   const [open, setOpen] = useState(false);
-
   const { username } = useSelector((state) => state.userState);
   const dispatch = useDispatch();
   const showDrawer = () => {
