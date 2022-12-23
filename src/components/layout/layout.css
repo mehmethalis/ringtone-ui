@@ -15,6 +15,17 @@
   opacity: 0.5;
   transition-duration: 0.5s;
 }
+.ant-layout-header {
+  height: 100px !important;
+}
 .header-right {
   float: right;
 }
+.player-container {
+  float: left;
+  width: 800px;
+  height: 500px;
+  margin-top: 12px;
+  margin-left: 600px;
+}
+

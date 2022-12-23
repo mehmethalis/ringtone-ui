@@ -7,6 +7,7 @@ import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogoutRequest } from "../../store/actions/user.actions";
 import DrawerFooter from "./drawer/DrawerFooter";
+import Player from "../shared/player";
 const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
@@ -29,6 +30,9 @@ export default function DefaultHeader({ bread }) {
         background: colorBgContainer,
       }}
     >
+      <div className="player-container">
+        <Player />
+      </div>
       <div className="header-right">
         <Badge count={5} offset={[-12, 12]} size="small">
           <Avatar
@@ -38,8 +42,14 @@ export default function DefaultHeader({ bread }) {
             icon={<ShoppingCartOutlined />}
             className="avatar"
           />
-          <Drawer title={'Shopping Cart'} width={520} closable={false} onClose={onClose} open={open}>
-            <DrawerFooter/>
+          <Drawer
+            title={"Shopping Cart"}
+            width={520}
+            closable={false}
+            onClose={onClose}
+            open={open}
+          >
+            <DrawerFooter />
           </Drawer>
         </Badge>
 
