@@ -15,6 +15,7 @@ const removeLocalStorage = async (key) => await window.localStorage.removeItem(k
 function* loginRequest({ credentials }) {
   try {
     const session = yield call(login, credentials);
+
     yield call(setLocalStorage, "session", JSON.stringify(session));
     const user = yield call(getProfile);
     yield put(userLoginRequestSuccess(user));
