@@ -6,10 +6,12 @@ export default function DrawerFooter() {
   return (
     <Footer
       style={{
-        textAlign: "center",
+        textAlign: "end",
       }}
     >
-      <Button>Continue to checkout</Button>
+      <Button ghost type={"primary"} size={"large"}>
+        Continue To Checkout
+      </Button>
     </Footer>
   );
 }
