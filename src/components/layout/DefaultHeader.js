@@ -1,16 +1,30 @@
-import React from "react";
-import { UserOutlined, LogoutOutlined, CrownFilled } from "@ant-design/icons";
-import { Layout, Avatar, Popover, Badge, theme } from "antd";
+import React, {useState} from "react";
+import {
+  UserOutlined,
+  LogoutOutlined,
+  CrownFilled,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
+import { Layout, Avatar, Popover, Badge, theme, Drawer } from "antd";
 import moment from "moment";
 import "./layout.css";
 import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogoutRequest } from "../../store/actions/user.actions";
+import DrawerHeader from "./drawer/DrawerHeader";
+import DrawerFooter from "./drawer/DrawerFooter";
 const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
+  const [open, setOpen] = useState(false);
   const { profile } = useSelector((state) => state.userState);
   const dispatch = useDispatch();
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -22,6 +36,19 @@ export default function DefaultHeader({ bread }) {
       }}
     >
       <div className="header-right">
+        <Badge count={5} offset={[-12, 12]} size="small">
+          <Avatar
+            onClick={showDrawer}
+            size={50}
+            style={{ color: "#002140", backgroundColor: "white"}}
+            icon={<ShoppingCartOutlined />}
+            className="avatar"
+          />
+          <Drawer width={520} closable={false} onClose={onClose} open={open}>
+            <DrawerFooter/>
+          </Drawer>
+        </Badge>
+
         <Popover
           content={
             <div>

@@ -17,7 +17,7 @@ export default function LoginForm() {
       <a href="/">
         <Logo></Logo>
       </a>
-      <h3 className="heading">Giriş Yap</h3>
+      <h3 className="heading"></h3>
       <Form
         name="normal_login"
         size="middle"
@@ -26,19 +26,19 @@ export default function LoginForm() {
       >
         <Form.Item
           name="email"
-          rules={[{ required: true, type: "email", message: "Geçerli bir e-posta adresi girin!" }]}
+          rules={[{ required: true, type: "email", message: "Please enter a valid e-mail!" }]}
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
             type="email"
-            placeholder="E-Posta"
+            placeholder="E-mail"
           />
         </Form.Item>
-        <Form.Item name="password" rules={[{ required: true, message: "Şifrenizi girin!" }]}>
+        <Form.Item name="password" rules={[{ required: true, message: "Please enter your password!" }]}>
           <Input.Password
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
-            placeholder="Şifre"
+            placeholder="Password"
           />
         </Form.Item>
 
@@ -49,7 +49,7 @@ export default function LoginForm() {
           className="btn-login"
           loading={isLoading}
         >
-          Giriş Yap
+          Log In
         </Button>
       </Form>
     </div>
