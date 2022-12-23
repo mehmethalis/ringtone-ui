@@ -47,16 +47,13 @@ export default function DefaultHeader({ bread }) {
           <Drawer
             title={"Shopping Cart"}
             width={520}
-            closable={false}
+            closable={true}
             onClose={onClose}
             open={open}
+            closeIcon={<CloseOutlined />}
+            footer={<DrawerFooter/>}
           >
-            <Button onClick={onClose}>
-              <CloseOutlined />
-            </Button>
-
             <DrawerBody />
-            <DrawerFooter />
           </Drawer>
         </Badge>
 
