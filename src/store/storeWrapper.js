@@ -14,8 +14,8 @@ export default function StoreWrapper({ children }) {
     const checkUser = async () => {
       const session = await window.localStorage.getItem("session");
       if (session) {
-        const { userId } = JSON.parse(session);
-        if (userId) {
+        const { id } = JSON.parse(session);
+        if (id) {
           await dispatch(userVerifyToken());
           setLoading(false);
           if (location.pathname === "/auth/signin") {
@@ -29,8 +29,7 @@ export default function StoreWrapper({ children }) {
         }
       }
     };
-    setLoading(false)
-    // checkUser();
+    checkUser();
   }, [location.pathname, isLogin, dispatch, navigate]);
 
   return loading ? <></> : <>{children}</>;
