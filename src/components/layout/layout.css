@@ -15,26 +15,18 @@
   opacity: 0.5;
   transition-duration: 0.5s;
 }
+
 .ant-layout-header {
   height: 100px !important;
 }
 .header-right {
-  height: 90px;
   float: right;
-<<<<<<< HEAD
-}
-=======
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  
+  margin-top: 10px;
 }
 .player-container {
   float: left;
   width: 800px;
   height: 500px;
   margin-top: 12px;
-  margin-left: 600px;
+  margin-left: 200px;
 }
-
->>>>>>> 6c63427718b140c79767b43cece503d436458040
