@@ -12,7 +12,7 @@ export default function DefaultFooter() {
         Ringtone Store{" "}
       </a>
       &#169;
-      {" " + new Date().getFullYear()} Tüm hakları saklıdır.
+      {" " + new Date().getFullYear()} 
     </Footer>
   );
 }

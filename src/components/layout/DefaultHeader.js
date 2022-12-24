@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { UserOutlined, LogoutOutlined, CrownFilled, ShoppingCartOutlined } from "@ant-design/icons";
-import { Layout, Avatar, Popover, Badge, theme, Drawer } from "antd";
-import moment from "moment";
+import {
+  UserOutlined,
+  LogoutOutlined,
+  CrownFilled,
+  ShoppingCartOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
+import { Layout, Avatar, Popover, Badge, theme, Drawer, Button } from "antd";
 import "./layout.css";
 import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogoutRequest } from "../../store/actions/user.actions";
 import DrawerFooter from "./drawer/DrawerFooter";
+<<<<<<< HEAD
+import DrawerBody from "./drawer/DrawerBody";
+=======
 import Player from "../shared/player";
+>>>>>>> 6c63427718b140c79767b43cece503d436458040
 const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
@@ -45,18 +54,31 @@ export default function DefaultHeader({ bread }) {
           <Drawer
             title={"Shopping Cart"}
             width={520}
+<<<<<<< HEAD
+            closable={true}
+            onClose={onClose}
+            open={open}
+            closeIcon={<CloseOutlined />}
+            footer={<DrawerFooter/>}
+          >
+            <DrawerBody />
+=======
             closable={false}
             onClose={onClose}
             open={open}
           >
             <DrawerFooter />
+>>>>>>> 6c63427718b140c79767b43cece503d436458040
           </Drawer>
         </Badge>
 
         <Popover
           content={
             <div>
-              <a href="javascript;" onClick={() => dispatch(userLogoutRequest())}>
+              <a
+                href="javascript;"
+                onClick={() => dispatch(userLogoutRequest())}
+              >
                 <LogoutOutlined style={{ paddingRight: "5px" }} />
                 Log Out
               </a>
@@ -64,7 +86,8 @@ export default function DefaultHeader({ bread }) {
           }
           title={
             <div>
-              <CrownFilled style={{ fontSize: "20px", color: "#ffce3d" }} /> {username}
+              <CrownFilled style={{ fontSize: "20px", color: "#ffce3d" }} />{" "}
+              {username}
             </div>
           }
           trigger="click"

@@ -1,11 +1,12 @@
 import React from "react";
 import "./home.css";
-import Navbar from "./Navbar";
+
+import SongsList from "../shared/songsList";
 
 export default function Home() {
   return (
     <div className="site-statistic-demo-card">
-      <Navbar />
+      <SongsList/>
     </div>
   );
 }

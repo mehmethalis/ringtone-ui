@@ -21,6 +21,9 @@
 .header-right {
   height: 90px;
   float: right;
+<<<<<<< HEAD
+}
+=======
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -34,3 +37,4 @@
   margin-left: 600px;
 }
 
+>>>>>>> 6c63427718b140c79767b43cece503d436458040
