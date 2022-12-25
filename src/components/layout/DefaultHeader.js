@@ -18,7 +18,10 @@ const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
   const [open, setOpen] = useState(false);
-  const { username } = useSelector((state) => state.userState);
+  const {
+    username,
+    basket: { items },
+  } = useSelector((state) => state.userState);
   const dispatch = useDispatch();
   const showDrawer = () => {
     setOpen(true);
@@ -40,11 +43,16 @@ export default function DefaultHeader({ bread }) {
         <Player />
       </div>
       <div className="header-right">
-        <Badge count={5} offset={[-8, 8]} size="small" style={{marginRight:"15px"}}>
+        <Badge count={items.length} offset={[-8, 8]} size="small" style={{ marginRight: "15px" }}>
           <Avatar
             onClick={showDrawer}
             size={"large"}
-            style={{ color: "#002140", backgroundColor: "white",fontSize:"30px",marginRight:"15px" }}
+            style={{
+              color: "#002140",
+              backgroundColor: "white",
+              fontSize: "30px",
+              marginRight: "15px",
+            }}
             icon={<ShoppingCartOutlined />}
             className="avatar"
           />

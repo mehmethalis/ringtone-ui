@@ -5,6 +5,9 @@ const userInitialState = {
   isLogin: false,
   userRingtones: null,
   allRingtones: null,
+  basket: {
+    items: [],
+  },
 };
 export default function userReducer(state = userInitialState, { type, user }) {
   switch (type) {
@@ -27,6 +30,19 @@ export default function userReducer(state = userInitialState, { type, user }) {
         ...user,
         allRingtones: user.allRingtones,
         isLogin: true,
+      };
+    case ActionTypes.ADD_ITEM:
+      return {
+        ...state,
+        basket: { ...state.basket, items: [...state.basket.items, user.basket.item] },
+      };
+    case ActionTypes.REMOVE_ITEM:
+      return {
+        ...state,
+        basket: {
+          ...state.basket,
+          items: state.basket.items.filter((item) => item.id !== user.basket.item.id),
+        },
       };
     case ActionTypes.PAY_REQUEST:
       return { ...state, isLoading: true };
