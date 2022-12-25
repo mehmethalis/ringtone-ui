@@ -13,6 +13,7 @@ import "./songslist.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSong } from "../../../store/actions/player.action";
 import { addItem, removeItem } from "../../../store/actions/user.actions";
+import { toast } from "react-toastify";
 import Bell from "../bell";
 
 export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
@@ -20,6 +21,19 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
   const {
     basket: { items },
   } = useSelector((state) => state.userState);
+
+  const handleDownload = (item) => {
+    const file = isPreview
+      ? require(`../../../assets/ringtones/ringtones_short/${item.fileName}`)
+      : require(`../../../assets/ringtones/ringtones_long/${item.fileName}`);
+
+    toast.success("Zil sesiniz başarıyla indirildi!");
+    const a = document.createElement("a");
+    a.style.display = "none";
+    a.href = file;
+    a.download = item.title + ".mp3";
+    a.click();
+  };
 
   return (
     <List loading={isLoading}>
@@ -30,12 +44,16 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
               avatar={<Bell isSmall={true} />}
               title={
                 <div style={{ width: "260px" }}>
-                  <Badge.Ribbon
-                    text={<b style={{ fontSize: "17px" }}>{"$ " + item.price}</b>}
-                    color="purple"
-                  >
+                  {isDownload ? (
                     <b>{item.title}</b>
-                  </Badge.Ribbon>
+                  ) : (
+                    <Badge.Ribbon
+                      text={<b style={{ fontSize: "17px" }}>{"$ " + item.price}</b>}
+                      color="purple"
+                    >
+                      <b>{item.title}</b>
+                    </Badge.Ribbon>
+                  )}
                 </div>
               }
               description={
@@ -69,7 +87,14 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
                 }
               >
               </Button>
-              {isDownload && <Button shape="circle" icon={<DownloadOutlined />} size={"default"} />}
+              {isDownload && (
+                <Button
+                  shape="circle"
+                  icon={<DownloadOutlined />}
+                  size={"default"}
+                  onClick={() => handleDownload(item)}
+                />
+              )}
               {!isDownload && (
                 <Button
                   danger={items.includes(item)}

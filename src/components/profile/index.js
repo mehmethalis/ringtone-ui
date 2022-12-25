@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 const { Meta } = Card;
 
 export default function Profile() {
-  const { username, userRingtones } = useSelector((state) => state.userState);
+  const { username, userRingtones, isLoading } = useSelector((state) => state.userState);
 
   return (
     <div className="site-statistic-demo-card">
-      <Row>
+      <Row justify={"center"} align={"top"}>
         <Col span={8}>
           <Card
             style={{
@@ -34,15 +34,24 @@ export default function Profile() {
               title="John Doe"
               description={
                 <span>
-                  <sm style={{ fontSize: "10px" }}>Downloadable</sm>{" "}
-                  <Badge color="#7265e6" size="medium" count={userRingtones ? "+" + userRingtones.length : "0"} />
+                  <span style={{ fontSize: "10px",padding:"3px" }}>Downloadable</span>
+                  <Badge
+                    color="#7265e6"
+                    size="medium"
+                    count={userRingtones ? "+" + userRingtones.length : "0"}
+                  />
                 </span>
               }
             />
           </Card>
         </Col>
         <Col span={16}>
-          <SongsList isDownload={true} />
+          <SongsList
+            songs={userRingtones}
+            isLoading={isLoading}
+            isDownload={true}
+            isPreview={false}
+          />
         </Col>
       </Row>
     </div>
