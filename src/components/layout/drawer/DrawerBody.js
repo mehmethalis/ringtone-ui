@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, List, Skeleton } from "antd";
+import { List, Skeleton, Card } from "antd";
 import Bell from "../../shared/bell/index";
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
@@ -18,30 +18,6 @@ export default function DrawerBody() {
         setList(res.results);
       });
   }, []);
-  const onLoadMore = () => {
-    setLoading(true);
-    setList(
-      data.concat(
-        [...new Array(count)].map(() => ({
-          loading: true,
-          name: {},
-          picture: {},
-        }))
-      )
-    );
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        const newData = data.concat(res.results);
-        setData(newData);
-        setList(newData);
-        setLoading(false);
-        // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-        // In real scene, you can using public method of react-virtualized:
-        // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-        window.dispatchEvent(new Event("resize"));
-      });
-  };
   const loadMore =
     !initLoading && !loading ? (
       <div
@@ -51,9 +27,7 @@ export default function DrawerBody() {
           height: 32,
           lineHeight: "32px",
         }}
-      >
-        <Button onClick={onLoadMore}>loading more</Button>
-      </div>
+      ></div>
     ) : null;
   return (
     <div>
@@ -64,21 +38,19 @@ export default function DrawerBody() {
         loadMore={loadMore}
         dataSource={list}
         renderItem={(item) => (
-          <List.Item
-            actions={[
-              <a key="list-loadmore-edit">edit</a>,
-              <a key="list-loadmore-more">more</a>,
-            ]}
+          <Card
+          style={{marginBottom: 20}}
           >
-            <Skeleton avatar title={false} loading={item.loading} active>
-              <List.Item.Meta
-                avatar={<Bell isSmall={true}/>}
-                title={<a href="https://ant.design">{item.name?.last}</a>}
-                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-              />
-              <div>content</div>
-            </Skeleton>
-          </List.Item>
+            <List.Item actions={[<a key="list-loadmore-more">remove</a>]}>
+              <Skeleton avatar title={false} loading={item.loading} active>
+                <List.Item.Meta
+                  avatar={<Bell isSmall={true} />}
+                  title={<a href="https://ant.design">{item.name?.last}</a>}
+                />
+                <div>price</div>
+              </Skeleton>
+            </List.Item>
+          </Card>
         )}
       />
     </div>
