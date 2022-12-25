@@ -4,8 +4,9 @@ import {
   LogoutOutlined,
   CrownFilled,
   ShoppingCartOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
-import { Layout, Avatar, Popover, Badge, theme, Drawer, Button } from "antd";
+import { Layout, Avatar, Popover, Badge, theme, Drawer } from "antd";
 import "./layout.css";
 import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,20 +18,26 @@ const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
   const [open, setOpen] = useState(false);
+
   const {
     username,
     basket: { items },
   } = useSelector((state) => state.userState);
+
   const dispatch = useDispatch();
+
   const showDrawer = () => {
     setOpen(true);
   };
+
   const onClose = () => {
     setOpen(false);
   };
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
   return (
     <Header
       style={{
@@ -38,6 +45,18 @@ export default function DefaultHeader({ bread }) {
         background: colorBgContainer,
       }}
     >
+      <Drawer
+        title={<span style={{ float: "right" }}>Shopping Cart</span>}
+        width={500}
+        height={500}
+        closable={true}
+        onClose={onClose}
+        closeIcon={<CloseOutlined />}
+        open={open}
+        footer={<DrawerFooter />}
+      >
+        <DrawerBody />
+      </Drawer>
       <div className="player-container">
         <Player />
       </div>
@@ -55,16 +74,6 @@ export default function DefaultHeader({ bread }) {
             icon={<ShoppingCartOutlined />}
             className="avatar"
           />
-          <Drawer
-            title={"Shopping Cart"}
-            width={520}
-            closable={false}
-            onClose={onClose}
-            open={open}
-            footer={<DrawerFooter/>}
-          >
-            <DrawerBody/>
-          </Drawer>
         </Badge>
 
         <Popover

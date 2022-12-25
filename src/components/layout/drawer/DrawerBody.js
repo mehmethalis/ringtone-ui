@@ -1,53 +1,54 @@
-import React, { useEffect, useState } from "react";
-import { List, Skeleton, Card } from "antd";
+import React from "react";
+import { List, Skeleton, Card, Button } from "antd";
 import Bell from "../../shared/bell/index";
-const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
+import { FieldTimeOutlined, CloseOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItem } from "../../../store/actions/user.actions";
 
 export default function DrawerBody() {
-  const [initLoading, setInitLoading] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const [list, setList] = useState([]);
-  useEffect(() => {
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        setInitLoading(false);
-        setData(res.results);
-        setList(res.results);
-      });
-  }, []);
-  const loadMore =
-    !initLoading && !loading ? (
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: 12,
-          height: 32,
-          lineHeight: "32px",
-        }}
-      ></div>
-    ) : null;
+  const {
+    basket: { items },
+  } = useSelector((state) => state.userState);
+
+  const dispatch = useDispatch();
   return (
-    <div>
+    <div style={{ height: "50vh" }}>
       <List
         className="demo-loadmore-list"
-        loading={initLoading}
         itemLayout="horizontal"
-        loadMore={loadMore}
-        dataSource={list}
+        dataSource={items}
         renderItem={(item) => (
-          <Card
-          style={{marginBottom: 20}}
-          >
-            <List.Item actions={[<a key="list-loadmore-more">remove</a>]}>
-              <Skeleton avatar title={false} loading={item.loading} active>
+          <Card style={{ marginBottom: 20 }} key={item.title}>
+            <List.Item
+              actions={[
+                <Button
+                  danger
+                  onClick={() => dispatch(removeItem(item))}
+                  shape="circle"
+                  icon={<CloseOutlined style={{ fontSize: "13px", padding: "2px" }} />}
+                />,
+              ]}
+            >
+              <Skeleton avatar title={false} loading={false} active>
                 <List.Item.Meta
-                  avatar={<Bell isSmall={true} />}
-                  title={<a href="https://ant.design">{item.name?.last}</a>}
+                  avatar={
+                    <div style={{ marginTop: "15px", paddingRight: "15px" }}>
+                      <Bell isSmall={true} />
+                    </div>
+                  }
+                  title={
+                    <div style={{ marginTop: "8px" }}>
+                      <b>{item.title}</b>
+                      <p>
+                        <FieldTimeOutlined /> {"  "}
+                        {item.duration.toFixed(2) + " min"}
+                      </p>
+                    </div>
+                  }
                 />
-                <div>price</div>
+                <div style={{ fontSize: "20px" }}>
+                  <b>$ {item.price}</b>
+                </div>
               </Skeleton>
             </List.Item>
           </Card>

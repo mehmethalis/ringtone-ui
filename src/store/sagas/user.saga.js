@@ -30,9 +30,9 @@ function* loginRequest({ credentials }) {
     const allRingtones = yield call(getAllRingtones);
 
     user.userRingtones = userRingtones;
-    user.allRingtones = allRingtones;
+    user.allRingtones = allRingtones.filter((item) => !userRingtones.map(item=>item.id).includes(item.id));
     yield put(userLoginRequestSuccess(user));
-    toast.success("Başarıyla giriş yapıldı!");
+    toast.success("Successfully logged in!");
   } catch (err) {
     toast.error(err.response.data.message);
     yield put(userLoginRequestError());
@@ -46,7 +46,7 @@ function* verifyUser() {
     const allRingtones = yield call(getAllRingtones);
 
     user.userRingtones = userRingtones;
-    user.allRingtones = allRingtones;
+    user.allRingtones = allRingtones.filter((item) => !userRingtones.map(item=>item.id).includes(item.id));
     yield put(userVerifyTokenSuccess(user));
   } catch (err) {
     toast.error(err.response.data.message);
@@ -57,7 +57,7 @@ function* verifyUser() {
 function* makePayment({ ringtonesIds }) {
   try {
     const userRingtones = yield call(pay, ringtonesIds);
-
+    toast.success("Payment made successfully!");
     yield put(paySuccess(userRingtones));
   } catch (err) {
     toast.error(err.response.data.message);
@@ -69,7 +69,7 @@ function* logoutRequest() {
     yield call(removeLocalStorage, "session");
     yield put(userLogoutRequestSuccess());
   } catch (err) {
-    toast.error("Bir hata oluştu");
+    toast.error("something went wrong");
   }
 }
 

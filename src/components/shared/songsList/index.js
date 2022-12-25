@@ -27,7 +27,7 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
       ? require(`../../../assets/ringtones/ringtones_short/${item.fileName}`)
       : require(`../../../assets/ringtones/ringtones_long/${item.fileName}`);
 
-    toast.success("Zil sesiniz başarıyla indirildi!");
+    toast.success("Ringtone downloaded!");
     const a = document.createElement("a");
     a.style.display = "none";
     a.href = file;
@@ -85,8 +85,7 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
                     selectSong({ selectedSong: item, songType: isPreview ? "isPreview" : "full" })
                   )
                 }
-              >
-              </Button>
+              ></Button>
               {isDownload && (
                 <Button
                   shape="circle"
@@ -101,8 +100,14 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
                   icon={items.includes(item) ? <LogoutOutlined /> : <ShoppingOutlined />}
                   onClick={
                     items.includes(item)
-                      ? () => dispatch(removeItem(item))
-                      : () => dispatch(addItem(item))
+                      ? () => {
+                          dispatch(removeItem(item));
+                          toast.success("The product removed from your cart.");
+                        }
+                      : () => {
+                          dispatch(addItem(item));
+                          toast.success("The product added to your cart.");
+                        }
                   }
                 >
                   {items.includes(item) ? "Remove" : "Add to Cart"}

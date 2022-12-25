@@ -49,6 +49,10 @@ export default function userReducer(state = userInitialState, { type, user }) {
     case ActionTypes.PAY_REQUEST_SUCCESS:
       return {
         ...state,
+        basket: {
+          ...state.basket,
+          items: [],
+        },
         userRingtones: [...state.userRingtones, ...user.userRingtones],
         isLoading: false,
       };

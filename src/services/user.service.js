@@ -82,14 +82,6 @@ export const getUserRingtones = async () => {
       duration: 1.3,
       isCopyright: false,
     },
-    {
-      id: "3",
-      fileName: "kicau.mp3",
-      title: "Kicau",
-      price: 9.3,
-      duration: 3.3,
-      isCopyright: true,
-    },
   ];
 };
 
