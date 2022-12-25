@@ -16,6 +16,7 @@
   line-height: 20px;
   font-weight: 600;
   margin-top: 5px;
+  width: max-content;
 }
 .player-container .rhap_container {
   background: none;

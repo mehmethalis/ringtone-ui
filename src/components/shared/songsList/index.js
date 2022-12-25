@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Button } from "antd";
+import { List, Button,Badge } from "antd";
 import {
   DownloadOutlined,
   ShoppingOutlined,
@@ -22,7 +22,7 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
           <List.Item key={item.id} style={{ padding: "15px" }}>
             <List.Item.Meta
               avatar={<Logo isSmall={true} />}
-              title={item.title}
+              title={<div style={{width:"260px"}}><Badge.Ribbon text={<b>{"$ "+ item.price}</b>}  color="purple"> <b>{item.title}</b></Badge.Ribbon></div>}
               description={
                 <div>
                   <span>
@@ -52,9 +52,9 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
                     selectSong({ selectedSong: item, songType: isPreview ? "isPreview" : "full" })
                   )
                 }
-              />
+              >Preview</Button>
               {isDownload && <Button shape="circle" icon={<DownloadOutlined />} size={"default"} />}
-              <Button icon={<ShoppingOutlined />} />
+              <Button icon={<ShoppingOutlined />} > Add to Basket</Button>
             </div>
           </List.Item>
         )}
