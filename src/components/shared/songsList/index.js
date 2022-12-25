@@ -9,12 +9,12 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import VirtualList from "rc-virtual-list";
-import Logo from "../logo";
 import "./songslist.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSong } from "../../../store/actions/player.action";
 import { addItem, removeItem } from "../../../store/actions/user.actions";
 import { toast } from "react-toastify";
+import Bell from "../bell";
 
 export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
         {(item) => (
           <List.Item key={item.id} style={{ padding: "15px" }}>
             <List.Item.Meta
-              avatar={<Logo isSmall={true} />}
+              avatar={<Bell isSmall={true} />}
               title={
                 <div style={{ width: "260px" }}>
                   {isDownload ? (
@@ -86,7 +86,6 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
                   )
                 }
               >
-                Preview
               </Button>
               {isDownload && (
                 <Button
@@ -106,7 +105,7 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
                       : () => dispatch(addItem(item))
                   }
                 >
-                  {items.includes(item) ? "Remove" : "Add to Basket"}
+                  {items.includes(item) ? "Remove" : "Add to Cart"}
                 </Button>
               )}
             </div>

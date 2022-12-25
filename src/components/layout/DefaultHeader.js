@@ -4,7 +4,6 @@ import {
   LogoutOutlined,
   CrownFilled,
   ShoppingCartOutlined,
-  CloseOutlined,
 } from "@ant-design/icons";
 import { Layout, Avatar, Popover, Badge, theme, Drawer, Button } from "antd";
 import "./layout.css";
@@ -62,8 +61,9 @@ export default function DefaultHeader({ bread }) {
             closable={false}
             onClose={onClose}
             open={open}
+            footer={<DrawerFooter/>}
           >
-            <DrawerFooter />
+            <DrawerBody/>
           </Drawer>
         </Badge>
 

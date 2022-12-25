@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import { Col, Row } from "antd";
 import "./player.css";
-import CDIcon from "../../../assets/images/cd.png";
 import { useSelector } from "react-redux";
+import Bell from "../bell";
 
 export default function Player() {
   const { selectedSong, songType } = useSelector((state) => state.playerState);
@@ -29,7 +29,6 @@ export default function Player() {
       <Row justify={"center"}>
         <Col span={4}>
           <div className="cover">
-            <img src={CDIcon} alt="cd icon" width={30} />
             <p className="caption">
               {selectedSong && selectedSong.title ? selectedSong.title : ""}
             </p>
