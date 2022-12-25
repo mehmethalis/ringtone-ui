@@ -62,8 +62,8 @@ export default function DefaultHeader({ bread }) {
             closable={false}
             onClose={onClose}
             open={open}
+            footer={<DrawerFooter/>}
           >
-            <DrawerFooter />
           </Drawer>
         </Badge>
 
