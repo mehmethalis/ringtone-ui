@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Button, List, Skeleton } from "antd";
+import { Button, List, Skeleton } from "antd";
+import Bell from "../../shared/bell/index";
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 
@@ -71,7 +72,7 @@ export default function DrawerBody() {
           >
             <Skeleton avatar title={false} loading={item.loading} active>
               <List.Item.Meta
-                avatar={<Avatar src={item.picture.large} />}
+                avatar={<Bell isSmall={true}/>}
                 title={<a href="https://ant.design">{item.name?.last}</a>}
                 description="Ant Design, a design language for background applications, is refined by Ant UED Team"
               />
