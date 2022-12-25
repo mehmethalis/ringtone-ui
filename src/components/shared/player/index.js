@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import { Col, Row } from "antd";
 import "./player.css";
 import CDIcon from "../../../assets/images/cd.png";
-import Sarkı from "../../../assets/ringtones/ringones_short/bird_chirp_short.mp3";
+import { useSelector } from "react-redux";
 
 export default function Player() {
+  const { selectedSong, songType } = useSelector((state) => state.playerState);
+
+  const [soundFile, setSoundFile] = useState(null);
+
+  useEffect(() => {
+    async function importFile() {
+      const file =
+        songType === "isPreview"
+          ? await require(`../../../assets/ringtones/ringtones_short/${selectedSong.fileName}`)
+          : await require(`../../../assets/ringtones/ringtones_long/${selectedSong.fileName}`);
+
+      setSoundFile(file);
+    }
+    if (selectedSong) {
+      importFile();
+    }
+  }, [selectedSong, songType]);
+
   return (
     <div className="player">
       <Row justify={"center"}>
         <Col span={4}>
           <div className="cover">
             <img src={CDIcon} alt="cd icon" width={30} />
-            <p className="caption">Şarkı 1</p>
+            <p className="caption">
+              {selectedSong && selectedSong.title ? selectedSong.title : ""}
+            </p>
           </div>
         </Col>
         <Col span={20}>
-          <AudioPlayer
-            autoPlay
-            src={Sarkı}
-            onPlay={(e) => console.log("onPlay")}
-            // other props here
-          />
+          <AudioPlayer autoPlay src={soundFile} />
         </Col>
       </Row>
     </div>
