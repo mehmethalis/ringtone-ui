@@ -59,23 +59,18 @@ export default function DefaultHeader({ bread }) {
           <Drawer
             title={"Shopping Cart"}
             width={520}
-            closable={true}
+            closable={false}
             onClose={onClose}
             open={open}
-            closeIcon={<CloseOutlined />}
-            footer={<DrawerFooter/>}
           >
-            <DrawerBody />
+            <DrawerFooter />
           </Drawer>
         </Badge>
 
         <Popover
           content={
             <div>
-              <a
-                href="javascript;"
-                onClick={() => dispatch(userLogoutRequest())}
-              >
+              <a href="javascript;" onClick={() => dispatch(userLogoutRequest())}>
                 <LogoutOutlined style={{ paddingRight: "5px" }} />
                 Log Out
               </a>
@@ -83,8 +78,7 @@ export default function DefaultHeader({ bread }) {
           }
           title={
             <div>
-              <CrownFilled style={{ fontSize: "20px", color: "#ffce3d" }} />{" "}
-              {username}
+              <CrownFilled style={{ fontSize: "20px", color: "#ffce3d" }} /> {username}
             </div>
           }
           trigger="click"
