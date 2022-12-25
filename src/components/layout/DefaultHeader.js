@@ -12,11 +12,8 @@ import "moment/locale/tr";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogoutRequest } from "../../store/actions/user.actions";
 import DrawerFooter from "./drawer/DrawerFooter";
-<<<<<<< HEAD
 import DrawerBody from "./drawer/DrawerBody";
-=======
 import Player from "../shared/player";
->>>>>>> 6c63427718b140c79767b43cece503d436458040
 const { Header } = Layout;
 
 export default function DefaultHeader({ bread }) {
@@ -54,7 +51,6 @@ export default function DefaultHeader({ bread }) {
           <Drawer
             title={"Shopping Cart"}
             width={520}
-<<<<<<< HEAD
             closable={true}
             onClose={onClose}
             open={open}
@@ -62,13 +58,6 @@ export default function DefaultHeader({ bread }) {
             footer={<DrawerFooter/>}
           >
             <DrawerBody />
-=======
-            closable={false}
-            onClose={onClose}
-            open={open}
-          >
-            <DrawerFooter />
->>>>>>> 6c63427718b140c79767b43cece503d436458040
           </Drawer>
         </Badge>
 

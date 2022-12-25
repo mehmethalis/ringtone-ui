@@ -21,20 +21,11 @@
 .header-right {
   height: 90px;
   float: right;
-<<<<<<< HEAD
 }
-=======
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-.player-container {
+.player-container{
   float: left;
   width: 800px;
   height: 500px;
   margin-top: 12px;
   margin-left: 600px;
 }
-
->>>>>>> 6c63427718b140c79767b43cece503d436458040
