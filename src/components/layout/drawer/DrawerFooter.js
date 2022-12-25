@@ -1,17 +1,23 @@
 import React from "react";
-import { Layout, Button } from "antd";
+import { Layout, Button, Card } from "antd";
 const { Footer } = Layout;
 
 export default function DrawerFooter() {
   return (
     <Footer
       style={{
-        textAlign: "end",
+        textAlign: "start",
+        display: "flex",
+        gap: "15rem",
       }}
     >
-      <Button ghost type={"primary"} size={"large"}>
-        Continue To Checkout
+      <Card style={{width: 200, height:40}}>Total Price $
+      
+      </Card>
+      <Button type={"default"} size={"large"}>
+        Pay
       </Button>
+      
     </Footer>
   );
 }
