@@ -1,20 +1,26 @@
 import React from "react";
-import { List, Button,Badge } from "antd";
+import { List, Button, Badge } from "antd";
 import {
   DownloadOutlined,
   ShoppingOutlined,
   PlayCircleOutlined,
   FieldTimeOutlined,
   CopyrightOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import VirtualList from "rc-virtual-list";
 import Logo from "../logo";
 import "./songslist.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectSong } from "../../../store/actions/player.action";
+import { addItem, removeItem } from "../../../store/actions/user.actions";
 
 export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
   const dispatch = useDispatch();
+  const {
+    basket: { items },
+  } = useSelector((state) => state.userState);
+
   return (
     <List loading={isLoading}>
       <VirtualList data={songs} itemHeight={47} itemKey={"id"}>
@@ -22,7 +28,16 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
           <List.Item key={item.id} style={{ padding: "15px" }}>
             <List.Item.Meta
               avatar={<Logo isSmall={true} />}
-              title={<div style={{width:"260px"}}><Badge.Ribbon text={<b>{"$ "+ item.price}</b>}  color="purple"> <b>{item.title}</b></Badge.Ribbon></div>}
+              title={
+                <div style={{ width: "260px" }}>
+                  <Badge.Ribbon
+                    text={<b style={{ fontSize: "17px" }}>{"$ " + item.price}</b>}
+                    color="purple"
+                  >
+                    <b>{item.title}</b>
+                  </Badge.Ribbon>
+                </div>
+              }
               description={
                 <div>
                   <span>
@@ -52,9 +67,23 @@ export default function SongsList({ isDownload, songs, isLoading, isPreview }) {
                     selectSong({ selectedSong: item, songType: isPreview ? "isPreview" : "full" })
                   )
                 }
-              >Preview</Button>
+              >
+                Preview
+              </Button>
               {isDownload && <Button shape="circle" icon={<DownloadOutlined />} size={"default"} />}
-              <Button icon={<ShoppingOutlined />} > Add to Basket</Button>
+              {!isDownload && (
+                <Button
+                  danger={items.includes(item)}
+                  icon={items.includes(item) ? <LogoutOutlined /> : <ShoppingOutlined />}
+                  onClick={
+                    items.includes(item)
+                      ? () => dispatch(removeItem(item))
+                      : () => dispatch(addItem(item))
+                  }
+                >
+                  {items.includes(item) ? "Remove" : "Add to Basket"}
+                </Button>
+              )}
             </div>
           </List.Item>
         )}

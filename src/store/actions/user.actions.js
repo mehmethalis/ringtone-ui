@@ -57,3 +57,17 @@ export const paySuccess = (ringtones) => {
     user: { userRingtones: ringtones },
   };
 };
+
+export const addItem = (item) => {
+  return {
+    type: ActionTypes.ADD_ITEM,
+    user: { basket: { item } },
+  };
+};
+
+export const removeItem = (item) => {
+  return {
+    type: ActionTypes.REMOVE_ITEM,
+    user: { basket: { item } },
+  };
+};
