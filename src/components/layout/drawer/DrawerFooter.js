@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
 
-export default function DrawerFooter() {
+export default function DrawerFooter({ setShow }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -28,9 +28,10 @@ export default function DrawerFooter() {
     let ids = items.map((item) => item.id);
     dispatch(pay(ids));
     setLoading(false);
+    setShow(false);
     setTimeout(() => {
       navigate("/profile");
-    }, 1000);
+    }, 500);
   };
 
   return (

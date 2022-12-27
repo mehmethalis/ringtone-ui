@@ -53,7 +53,7 @@ export default function DefaultHeader({ bread }) {
         onClose={onClose}
         closeIcon={<CloseOutlined />}
         open={open}
-        footer={<DrawerFooter />}
+        footer={<DrawerFooter setShow={setOpen} />}
       >
         <DrawerBody />
       </Drawer>
